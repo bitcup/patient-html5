@@ -1,0 +1,43 @@
+<div class="modal" xmlns="http://www.w3.org/1999/html">
+    <form name="shareForm" ng-submit="doShare()">
+
+        <ion-content>
+
+            <div class="item item-text-wrap item-icon-left">
+                <i class="icon ion-ios7-information-outline"></i>
+                <p ng-show="sharePractitioners">
+                    Select practitioners you want to share information with.
+                    You can provide additional emails on the following screen.
+                </p>
+                <p ng-hide="sharePractitioners">
+                    You don't have any practitioners with email addresses.
+                    You can provide additional emails on the following screen.
+                </p>
+            </div>
+
+            <div class="list">
+                <div class="item item-input-inset" ng-show="sharePractitioners.length">
+                    <input class="item-input-wrapper" type="text" autocorrect="off"
+                           placeholder="Search" ng-model="query" reset-field>
+                </div>
+            </div>
+
+            <ul class="list">
+                <li class="item item-checkbox" ng-repeat="p in sharePractitioners | filter:query">
+                    <label class="checkbox" >
+                        <input type="checkbox" value="{{p}}" check-list='checkedPractitioners'>
+                    </label>
+                    <b>{{p.name}}, {{p.specialty}}</b><br>{{p.email}}
+                </li>
+            </ul>
+
+        </ion-content>
+
+        <ion-header-bar class="bar-secondary">
+            <button class="button button-clear" ng-click="closeShareModal()" type="button">Cancel</button>
+            <h1 class="title">Share</h1>
+            <button ng-disabled="!shareForm.$valid" class="button button-clear" type="submit"><b>Share</b></button>
+        </ion-header-bar>
+
+    </form>
+</div>

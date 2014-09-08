@@ -1,0 +1,43 @@
+<ion-view title="Practitioners">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios7-arrow-back" ng-cloak ng-show="!care"></button>
+    </ion-nav-buttons>
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="openPractitionerModal()"><b>Add</b></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div ng-hide="practitioners.length" class="item item-text-wrap item-icon-left">
+            <i class="icon ion-ios7-information-outline"></i>
+            <p>You don't have any practitioners.</p>
+            <p>You can add a new practitioner by clicking the Add button above.</p>
+        </div>
+
+        <div ng-show="care" class="item item-text-wrap item-icon-left">
+            <i class="icon ion-ios7-information-outline"></i>
+            <p>The practitioners below are assigned to care event <b>{{care.facilityName}}</b>.</p>
+        </div>
+
+        <ion-refresher on-refresh="doRefresh()"></ion-refresher>
+
+        <div class="list">
+            <div class="item item-input-inset" ng-show="showSearch && practitioners.length">
+                <input class="item-input-wrapper" type="text" autocorrect="off"
+                       placeholder="Search" ng-model="query" reset-field>
+            </div>
+
+            <a class="item item-icon-left item-icon-right" ng-repeat="p in practitioners | filter:query" href="#/tab/practitioner-details/{{p._id}}">
+                <i class="icon ion-ios7-person-outline"></i>
+                <h2>{{p.name}}</h2>
+                <h2 ng-show="p.care">{{p.specialty}} at {{p.care.facilityName}}</h2>
+                <h2 ng-show="!p.care">{{p.specialty}}</h2>
+                <h2 ng-if="p.phone">{{p.phone | tel}}</h2>
+                <h2 ng-if="p.email">{{p.email}}</h2>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+        </div>
+    </ion-content>
+
+</ion-view>

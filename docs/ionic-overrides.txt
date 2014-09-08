@@ -1,0 +1,7 @@
+ionic-bundle.js
+===============
+1) added the folowing in order to fix an issue with textarea
+
+container.addEventListener('scrollChildIntoView', function(e) {
+      // ob: see http://forum.ionicframework.com/t/setting-height-of-textarea-view-scroll-and-cloning-issue/3968/9
+      if (e.detail.target.getAttribute('data-scroll-child-into-view-disabled')) return;

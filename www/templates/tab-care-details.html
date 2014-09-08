@@ -1,0 +1,42 @@
+<ion-view title="{{ care.facilityName }}">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="showActionSheet()"><b>More</b></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <div class="list">
+            <label class="item item-input item-input-right-padded item-text-wrap">
+                <span class="input-label input-label-narrow">Facility</span>
+                {{care.facilityName}}
+            </label>
+            <label class="item item-input item-input-right-padded item-text-wrap" ng-show="care.location">
+                <span class="input-label input-label-narrow">Location</span>
+                {{care.location}}
+            </label>
+            <label class="item item-input item-input-right-padded item-text-wrap">
+                <span class="input-label input-label-narrow">Reason</span>
+                {{care.reason}}
+            </label>
+            <label class="item item-input item-input-right-padded item-text-wrap">
+                <span class="input-label input-label-narrow">Date</span>
+                <span ng-show="care.overnight">{{care.start | date:'mediumDate'}} to {{ (care.end | date:'mediumDate') || 'Present'}}</span>
+                <span ng-show="!care.overnight">{{care.start | date:'mediumDate'}}</span>
+            </label>
+
+            <a ng-show="numNotes" class="item item-icon-right" ui-sref="tab.notes({cId: care._id})">
+                <h2>Notes</h2>
+                <span class="badge badge-positive">{{numNotes}}</span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+            <a ng-show="numPractitioners" class="item item-icon-right" ui-sref="tab.practitioners({cId: care._id})">
+                <h2>Practitioners</h2>
+                <span class="badge badge-positive">{{numPractitioners}}</span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+
+        </div>
+    </ion-content>
+
+</ion-view>
+

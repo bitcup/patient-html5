@@ -1,0 +1,125 @@
+todos:
+------
+
+- assign bugs:
+    - if assign/unassign object multiple times, won't work - requires refresh?
+
+- clear search box: [FIXED - rev 334]
+    - http://codepen.io/ionic/pen/mFygh
+    - http://codepen.io/udfalkso/pen/cdfsp
+
+- sharing bugs:
+    - shared note date formatting [FIXED - rev 307]
+    - notes for care [FIXED - rev 306]
+
+- sharing: select from existing practitioners, AND/OR add emails [FIXED - rev 308]
+    - show that as a note saying you can add later in email compose
+
+- add note/practitioner:
+    - if in context of a parent, then show toggle in modal asking if you want to assign to parent [FIXED - rev 309]
+    - if not in context of a parent, popup asking if you want to assign to a practitioner/care [FIXED = rev 313]
+        - if yes: show appropriate parent list
+
+- phone number input
+    - add dashes/dots automatically
+    - if not add dashes/dots, display should add dashes automatically (format as a phone number) [FIXED - rev 310]
+
+- assign: if no parents, show message [FIXED - rev 318]
+
+- bug: cascading delete of care, practitioner [FIXED - rev 319]
+
+- bug: phone number entered with dashes does not get formatted
+    - todo: strip dashes before save?
+
+- assign button in nav should change to save (to support unassign)?
+
+- splash screen
+
+- graphics/css/colors
+
+- intro walk through to explain what app does/how to use
+
+- upgrade to 1.0.0 beta4:
+    - http://ionicframework.com/blog/ionic-huge-update/
+    - use collectionRepeat - probably not worth it for us
+    - keyboard plugin [FIXED - rev 293]
+
+- replace "More" with menu symbol (three lines/dots) [FIXED - rev 290, then reverted to using 'More' so as not to conflict with sliding menu ]
+- notes assigned to practitioner OR care [FIXED - rev 290]
+
+- find all notes/practitioners for a care [FIXED - rev 290]
+    - in the care details page,
+        - show notes/practitioners as list items (with badges for number)
+        - click on notes/practitioners ==> go to child list, filtered by parent
+        - impl: via stateParams as url params in routing
+    - same thing for practitioner details page
+
+- create a note + assign it in one step [FIXED - rev 299]
+    - in care/practitioner details, click More > Add Note
+    - note created is automatically assigned to parent
+
+- create a practitioner + assign it in one step [FIXED - rev 299]
+    - in care details, click More > Add Practitioner
+    - practitioner created is automatically assigned to care
+
+- note does not need a user-set date [FIXED - rev 285]
+    - datetime is automatically set to creation date and is not editable
+
+- replace all modals with regular views that map to controllers
+    - not necessarily ionic way, but angularjs way
+
+- after create an entity, redirect to detail page instead of list view [FIXED]
+- if assign an already-assigned entity, the checkbox should be shown [FIXED]
+- doctor visit fits data model, but too complicated
+    - overnight stay vs. doctor
+- note's date defaults to today [FIXED, already works on phone]
+- header css [FIXED - rev 281]
+    - lower text (margin-top), no overlap with phone text
+    - make buttons bigger/easier to click
+- bugs:
+    - Go button in virtual keyboard does not submit [FIXED - rev 270]
+    - consecutive modals fail validation, cannot save [FIXED - rev 267]
+    - when rendering list views, 'empty list' warning flashes briefly (while list items being fetched?)
+        - spinner + delay until items fetched?
+- sorting
+    - cares: by desc start date [FIXED]
+    - practitioners by name (with alphabet dividers?) [FIXED]
+    - notes: by desc date [FIXED]
+- sharing
+    - share button in detail pages [FIXED]
+    - share whole history in account tab OR dedicated share screen for sharing multiple cares (select)
+    - toggle for sending consent
+    - bug: add care notes to shared care
+- consent
+    - manage in the app?
+- detail pages need to be prettied up and made to make sense [FIXED - rev 285]
+- css of a notepad in notes page
+- linking to a care's practitioners via search: id
+    - doable while hiding internal ids?
+- when creating note for a practitioner/care, limit note date to that of care
+- note taking should support some elements of RTF [FIXED]
+    - at least new line (create filter to replace \n with <br> at render time inside card)
+    - later: markdown for power users?
+- account:
+    - email address (for sender sharing)
+    - lock pass (4-number style)
+        - session based
+        - change pass
+    - backup to gdrive/dropbox/cloud (native format - paid features - see what vesper uses)
+    - import from backup (paid feature)
+    - delete data
+    - other preferences
+- list loading with pagination (for larger data sets)
+- backup db to couch gateway
+    - what user management do you need
+    - test
+- replace buttons in header with: single button (more) + action sheets - see http://codepen.io/ionic/pen/jLylA [FIXED]
+- replace tabs with sliding side menu [FIXED - rev 292]
+    - if have to support multi-level tabs (like account) or more than 5 tabs
+- attachments
+    - take photo or select from album
+    - pdf - how? no file systems access, maybe integrate with dropbox/gdrive?
+    - how to limit size, etc.
+    - impact on db
+- popups should have a black background
+    - better yet, same treatment as actionsheet

@@ -1,0 +1,28 @@
+<ion-view hide-nav-bar="true" title="">
+    <ion-content>
+
+        <div class="padding" style="text-align: center;">
+            <h1>Sawacare</h1>
+            <h5>for Patients & Caregivers</h5>
+        </div>
+
+        <form name="loginForm" class="list" ng-submit="logIn()">
+            <div class="list">
+                <label class="item item-input">
+                    <span class="input-label">Email</span>
+                    <input type="email" ng-model="user.email" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Password</span>
+                    <input type="password" ng-model="user.password" required>
+                </label>
+            </div>
+            <div class="padding">
+                <button ng-disabled="!loginForm.$valid" class="button button-block button-positive" type="submit">
+                    Log In
+                </button>
+            </div>
+        </form>
+
+    </ion-content>
+</ion-view>

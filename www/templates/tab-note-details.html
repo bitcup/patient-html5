@@ -1,0 +1,42 @@
+<ion-view title="{{ note.content | showNoteHeader }}">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="showActionSheet()"><b>More</b></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <div class="item item-text-wrap item-icon-left">
+            <i class="icon ion-ios7-information-outline"></i>
+            <p>
+                This note was created on <b>{{(note.date | date:'mediumDate')}} at {{(note.date | date:'shortTime')}}</b>.
+                <span ng-show="note.practitioner">It is assigned to <b>{{note.practitioner.name}},
+                    {{note.practitioner.specialty}}.</b></span>
+                <span ng-show="note.care">It is assigned to care event <b>{{note.care.facilityName}}</b></span>
+                <span ng-show="note.care && note.care.overnight">
+                    ({{note.care.start | date:'mediumDate'}} to
+                    {{(note.care.end | date:'mediumDate') || 'Present'}}).
+                </span>
+                <span ng-show="note.care && !note.care.overnight">
+                    ({{note.care.start | date:'mediumDate'}}).
+                </span>
+                <span ng-show="!note.care && !note.practitioner">
+                    It is not assigned to any care events or practitioners.
+                </span>
+            </p>
+        </div>
+
+        <div ng-show="!note.care && !note.practitioner" class="item item-text-wrap item-icon-left">
+            <p><a class="button button-small-sawa button-clear" ng-click="openCareListModal()">Assign to Care</a></p>
+            <p><a class="button button-small-sawa button-clear" ng-click="openPractitionerListModal()">Assign to Practitioner</a></p>
+        </div>
+
+        <div full-size id="instructions" class="paper">
+            <b><div ng-bind-html='note.content | showNoteHeader'></div></b>
+            <div ng-bind-html='note.content | showNoteBodyHTML'></div>
+        </div>
+
+    </ion-content>
+
+</ion-view>
+

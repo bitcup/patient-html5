@@ -1,0 +1,61 @@
+<ion-view title="{{ practitioner.name }}">
+
+    <ion-nav-buttons side="right">
+        <button class="button button-clear" ng-click="showActionSheet()"><b>More</b></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+
+        <div ng-show="practitioner.care" class="item item-text-wrap item-icon-left">
+            <i class="icon ion-ios7-information-outline"></i>
+            <p>
+                <b>{{practitioner.name}}</b> is assigned to care event
+                <b>{{practitioner.care.facilityName}}</b>
+                <span ng-show="practitioner.care.overnight">
+                    ({{practitioner.care.start | date:'mediumDate'}} to
+                    {{ (practitioner.care.end | date:'mediumDate') || 'Present'}}).
+                </span>
+                <span ng-show="!practitioner.care.overnight">
+                    ({{practitioner.care.start | date:'mediumDate'}}).
+                </span>
+            </p>
+        </div>
+
+        <div ng-show="!practitioner.care" class="item item-text-wrap item-icon-left">
+            <i class="icon ion-ios7-information-outline"></i>
+            <p>
+                <b>{{practitioner.name}}</b> is not assigned to any care events.
+            </p>
+            <p>
+                <a class="button button-small-sawa button-clear" ng-click="openCareListModal()">Assign to Care</a>
+            </p>
+        </div>
+
+        <div class="list">
+            <label class="item item-input item-input-right-padded item-text-wrap">
+                <span class="input-label input-label-narrow">Name</span>
+                {{practitioner.name}}
+            </label>
+            <label class="item item-input item-input-right-padded item-text-wrap">
+                <span class="input-label input-label-narrow">Specialty</span>
+                {{practitioner.specialty}}
+            </label>
+            <span class="item item-input item-input-right-padded item-text-wrap" ng-if="practitioner.phone">
+                <span class="input-label input-label-narrow">Phone</span>
+                <a class="button button-clear" href="tel:{{practitioner.phone}}">{{practitioner.phone | tel}}</a>
+            </span>
+            <span class="item item-input item-input-right-padded item-text-wrap" ng-if="practitioner.email">
+                <span class="input-label input-label-narrow">Email</span>
+                <a class="button button-clear" href="mailto:{{practitioner.email}}">{{practitioner.email}}</a>
+            </span>
+            <a ng-show="numNotes" class="item item-icon-right" ui-sref="tab.notes({pId: practitioner._id})">
+                <h2>Notes</h2>
+                <span class="badge badge-positive">{{numNotes}}</span>
+                <i class="icon ion-chevron-right icon-accessory"></i>
+            </a>
+        </div>
+
+    </ion-content>
+
+</ion-view>
+

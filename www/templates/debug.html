@@ -1,0 +1,31 @@
+<ion-view title="DEBUG">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios7-arrow-back"></button>
+    </ion-nav-buttons>
+
+    <ion-content>
+        <!--<div>-->
+        <!--{{ cares | json }}-->
+        <!--</div>-->
+
+        <div class="padding">
+            <a class="button button-assertive" ng-click="deleteAllData()">DELETE DATA</a>
+        </div>
+
+        <div class="padding">
+            {{ info | json }}
+        </div>
+
+        <div class="padding">
+            <b>care stats:</b> {{ careStats.total_rows }} rows<br>
+            <b>practitioner stats:</b> {{ practitionerStats.total_rows }} rows<br>
+            <b>note stats:</b> {{ noteStats.total_rows }} rows<br>
+        </div>
+
+        <div class="padding" ng-repeat="d in docs">
+            <p>{{ d }}</p>
+        </div>
+
+    </ion-content>
+</ion-view>

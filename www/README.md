@@ -1,0 +1,1 @@
+HTML5 iPhone app for medical note-taking.  Uses pouch DB for persisting data in browser.  Uses ionic for html5/javascript/css. 

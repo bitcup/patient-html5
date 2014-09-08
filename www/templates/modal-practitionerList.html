@@ -1,0 +1,37 @@
+<div class="modal" xmlns="http://www.w3.org/1999/html">
+    <form name="practitionerListForm" ng-submit="assignPractitioner()">
+
+        <ion-content>
+            <div ng-hide="practitioners.length" class="item item-text-wrap item-icon-left">
+                <i class="icon ion-ios7-information-outline"></i>
+                <p>You don't have any practitioners to assign to.</p>
+            </div>
+
+            <div class="list">
+                <div class="item item-input-inset" ng-show="practitioners.length">
+                    <input class="item-input-wrapper" type="text" autocorrect="off"
+                           placeholder="Search" ng-model="query" reset-field>
+                </div>
+
+                <label class="item item-radio" ng-repeat="p in practitioners | filter:query">
+                    <input type="radio" name="meaningless" ng-model="note.practitionerId" value="{{ p._id }}">
+                        <div class="item-content">
+                            <h2>{{p.name}}</h2>
+                            <h3>{{p.specialty}} at {{p.care.facilityName}}</h3>
+                            <h3>{{p.care.start | date:'mediumDate'}} to {{ (p.care.end | date:'mediumDate') || 'Present'}}</h3>
+                            <button ng-show="note.practitionerId == p._id" class="button button-clear" ng-click="unAssign()" type="button">Unassign</button>
+                        </div>
+                        <i class="radio-icon ion-ios7-checkmark-outline"></i>
+                    </input>
+                </label>
+            </div>
+        </ion-content>
+
+        <ion-header-bar class="bar-secondary">
+            <button class="button button-clear" ng-click="closePractitionerListModal()" type="button">Cancel</button>
+            <h1 class="title">Select Practitioner</h1>
+            <button class="button button-clear" type="submit"><b>Assign</b></button>
+        </ion-header-bar>
+
+    </form>
+</div>

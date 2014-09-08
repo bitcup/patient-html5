@@ -1,0 +1,61 @@
+<div class="modal">
+    <form name="practitionerForm" ng-submit="savePractitioner()">
+
+        <ion-content>
+
+            <div class="list">
+                <div class="item item-toggle" ng-show="care">
+                    <span class="input-label" style="margin-left: -7px;">Assign to {{care.facilityName}}</span>
+                    <label class="toggle" style="top: 16px;">
+                        <input type="checkbox" ng-model="practitioner.careId">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+                <label class="item item-input">
+                    <span class="input-label">Name</span>
+                    <input type="text" ng-model="practitioner.name" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Specialty</span>
+                    <input type="text" ng-model="practitioner.specialty" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Phone</span>
+                    <input type="tel" ng-model="practitioner.phone">
+                </label>
+                <label class="item item-input">
+                    <span class="input-label">Email</span>
+                    <input type="email" ng-model="practitioner.email">
+                </label>
+                <!--
+                <div class="item item-toggle">
+                    <span class="input-label" style="margin-left: -7px;">Office Visit</span>
+                    <label class="toggle" style="top: 16px;">
+                        <input type="checkbox" ng-model="practitioner.visit">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+                <label ng-show="practitioner.visit" class="item item-input">
+                    <span class="input-label">Visit Date</span>
+                    <input type="date" ng-model="practitioner.visitDate" required ng-if="practitioner.visit">
+                </label>
+                <label ng-show="practitioner.visit" class="item item-input">
+                    <span class="input-label">Office Location</span>
+                    <input type="text" ng-model="practitioner.officeLocation" required  ng-if="practitioner.visit">
+                </label>
+                -->
+            </div>
+        </ion-content>
+
+        <ion-header-bar class="bar-secondary">
+            <button class="button button-clear" ng-click="closePractitionerModal()" type="button">Cancel</button>
+            <h1 class="title">{{ practitioner.name || 'New Practitioner' }}</h1>
+            <button ng-disabled="!practitionerForm.$valid" class="button button-clear" type="submit"><b>Save</b></button>
+        </ion-header-bar>
+
+    </form>
+</div>

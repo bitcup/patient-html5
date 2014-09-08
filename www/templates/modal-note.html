@@ -1,0 +1,44 @@
+<div class="modal">
+    <form name="noteForm" ng-submit="saveNote()">
+
+        <ion-content>
+
+            <div class="list">
+                <div class="item item-toggle" ng-show="care && care.facilityName">
+                    <span class="input-label" style="margin-left: -7px;">Assign to {{care.facilityName}}</span>
+                    <label class="toggle" style="top: 16px;">
+                        <input type="checkbox" ng-model="note.careId">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+
+                <div class="item item-toggle" ng-show="practitioner && practitioner.name">
+                    <span class="input-label" style="margin-left: -7px;">Assign to {{practitioner.name}}</span>
+                    <label class="toggle" style="top: 16px;">
+                        <input type="checkbox" ng-model="note.practitionerId">
+                        <div class="track">
+                            <div class="handle"></div>
+                        </div>
+                    </label>
+                </div>
+            </div>
+
+            <div class="padding">
+                <textarea data-scroll-child-into-view-disabled="true"
+                          full-size class="paper" id="instructions"
+                          placeholder="Note" ng-model="note.content"
+                          style="padding: 0;"></textarea>
+            </div>
+        </ion-content>
+
+        <ion-header-bar class="bar-secondary">
+            <button class="button button-clear" ng-click="closeNoteModal()" type="button">Cancel</button>
+            <h2 ng-show="note.date" class="title">{{(note.date | date:'mediumDate')}} at {{(note.date | date:'shortTime')}}</h2>
+            <h2 ng-show="!note.date" class="title">New Note</h2>
+            <button ng-disabled="!noteForm.$valid" class="button button-clear" type="submit"><b>Save</b></button>
+        </ion-header-bar>
+
+    </form>
+</div>

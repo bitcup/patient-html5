@@ -1,0 +1,27 @@
+<ion-view title="Account">
+
+    <ion-nav-buttons side="left">
+        <button menu-toggle="left" class="button button-icon icon ion-ios7-arrow-back"></button>
+    </ion-nav-buttons>
+
+    <ion-content class="has-header padding">
+
+        <!--<div style="text-align: center;">-->
+            <!--You are logged in as: {{ loggedInUserEmail }}-->
+        <!--</div>-->
+
+        <div class="card">
+            <div class="item item-text-wrap item-icon-left">
+                <i class="icon ion-ios7-information-outline"></i>
+                You are logged in as: {{ loggedInUserEmail }}.
+            </div>
+        </div>
+
+        <form name="loginForm" class="list">
+            <div>
+                <button class="button button-block button-positive" ng-click="signOut()">Log Out</button>
+            </div>
+        </form>
+
+    </ion-content>
+</ion-view>
