@@ -2,8 +2,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <!--<meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">-->
-    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1, maximum-scale=1, minimal-ui">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
     <title></title>
 
     <link href="lib/ionic/css/ionic.min.css" rel="stylesheet">
@@ -16,14 +15,14 @@
     <!-- ionic/angularjs js -->
     <script src="lib/ionic/js/ionic.bundle.js"></script>
 
+    <!-- cordova script (this will be a 404 during development) -->
+    <script src="cordova.js"></script>
+
     <!-- pouchdb-->
-    <script src="lib/pouchdb/pouchdb-2.1.0.min.js"></script>
+    <script src="lib/pouchdb/pouchdb-3.0.6.min.js"></script>
 
     <!-- date-->
     <script src="lib/moment-2.6.0/moment-with-langs.min.js"></script>
-
-    <!-- cordova script (this will be a 404 during development) -->
-    <script src="cordova.js"></script>
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
@@ -33,6 +32,6 @@
     <script src="js/filters.js"></script>
 </head>
 <body ng-app="sawa-patient">
-    <ion-nav-view animation="slide-left-right-ios7"></ion-nav-view>
+    <ion-nav-view></ion-nav-view>
 </body>
 </html>

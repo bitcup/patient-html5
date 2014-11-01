@@ -4,6 +4,17 @@ from top level dir (parent of www)
 > rm -rf platforms/
 > rm -rf plugins/
 > mkdir platforms
+
+> cordova plugin add org.apache.cordova.device
+> cordova plugin add org.apache.cordova.console
+> cordova plugin add com.ionic.keyboard
+
+ionic platform add ios
+ionic build ios
+ionic emulate ios
+ionic run ios
+
+OLD
 > cordova plugin add org.apache.cordova.device
 > cordova plugin add org.apache.cordova.statusbar
 > cordova plugin add https://github.com/driftyco/ionic-plugins-keyboard.git
